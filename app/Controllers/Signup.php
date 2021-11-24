@@ -98,8 +98,7 @@ class Signup extends BaseController
              * Jika validasi gagal, 
              * maka kirimkan pesan kesalahan ke view signup
              */
-            $validator = \Config\Services::validation();
-            return redirect()->to(base_url('signup'))->withInput()->with('validator', $validator);
+            return redirect()->to(base_url('signup'))->withInput();
         }
         
         /**
