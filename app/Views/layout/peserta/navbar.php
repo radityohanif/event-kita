@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">FAQ</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="<?= base_url('peserta/daftarEvent'); ?>">Daftar Event</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false"> <i class="bi bi-person-fill"></i>

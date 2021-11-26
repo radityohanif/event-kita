@@ -35,4 +35,27 @@ class EventModel extends Model
         return $this->where(['id' => $id])
                     ->first();
     }
+
+    public function cari($namaEvent)
+    {
+        return $this->like(['nama' => $namaEvent])
+                    ->findAll();
+    }
+
+    public function cekWaktu($daftarevent)
+    {  
+        $datenow = date('Y-m-d');
+        $hasil = [];
+        foreach($daftarevent as $event)
+        {    
+            if($datenow > $event['tanggal'])
+            {
+                array_push($hasil, "Sudah Mulai") ;
+            }else
+            {
+                array_push($hasil, "Belum Mulai") ;
+            }
+        }
+        return $hasil;
+    }
 }

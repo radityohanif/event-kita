@@ -14,8 +14,8 @@
   <h2 class="mt-150 text-center text-coklat fw-bolder mb-4">DAFTAR EVENT</h2>
   <div class="row justify-content-center">
     <div class="col-md-9 col-10">
-      <form class="d-flex shadow">
-        <input class="form-control fs-md-4 p-md-3" type="text" placeholder="Cari event yang mau kamu ikuti.." aria-label="Search" />
+      <form class="d-flex shadow" action="http://localhost/eventkita/public/peserta/cariEvent" method="POST">
+        <input class="form-control fs-md-4 p-md-3" type="text" placeholder="Cari event yang mau kamu ikuti.." aria-label="Search" name="search"/>
         <button class="btn btn-primary" type="submit" style="width: 100px;">
           <i class="bi bi-search fs-3"></i>
         </button>
@@ -27,26 +27,39 @@
   <!-- Daftar Event -->
   <div class="container mt-5">
     <div class="row mt-5 justify-content-center">
-      <?php foreach($daftar_event as $event): ?>
+      <?php 
+        $index = 0;
+        foreach($daftar_event as $event): 
+        $status = $statusMulai[$index];
+      ?>
       <div class="col-md-4 my-3">
         <a href="#">
           <div class="card shadow">
             <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
-              <span class="badge bg-primary">Belum Mulai</span>
+              <?php if($status == 'Sudah Mulai')
+                {
+                  echo '<span class="badge bg-danger">Sudah Mulai</span>';
+                }else
+                {
+                  echo '<span class="badge bg-primary">Belum Mulai</span>';
+                }
+              ?>
               <p class="card-text mt-3">
                 <i class="bi bi-calendar-date-fill"></i>
                 Jum’at, 15 Oktober 2021 08.00
                 <br />
                 <i class="bi bi-person-fill"></i>
-                208 Pendaftar
+                <?= $event['kuota']; ?> Kuota Peserta
               </p>
             </div>
           </div>
         </a>
       </div>
-      <?php endforeach; ?>
+      <?php 
+      $index++;
+      endforeach; ?>
     </div>
   </div>
   <!-- Akhir Daftar Event -->
