@@ -28,15 +28,7 @@ class Signup extends BaseController
         */
         if(isset($_SESSION['user']['tipe_user'])) 
         {
-            switch ($_SESSION['user']['tipe_user']) 
-            {
-                case 'peserta':
-                    return redirect()->to(base_url('/peserta'));
-                    break;
-                case 'penyelenggara':
-                    return redirect()->to(base_url('/penyelenggara'));
-                    break;
-            }
+            return redirect()->to(base_url($_SESSION['user']['tipe_user']));
         }
         /** 
          * Tampilkan view

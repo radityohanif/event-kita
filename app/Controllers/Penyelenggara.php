@@ -22,17 +22,13 @@ class Penyelenggara extends BaseController
          * Periksa variabel session, 
          * pastikan yang boleh mengakses controller ini hanya user dengan role penyelenggara saja
         */
-        if(isset($_SESSION['user']['tipe_user'])) 
-        {
-            switch ($_SESSION['user']['tipe_user']) 
-            {
-                case 'peserta':
-                    return redirect()->to(base_url('peserta'));
-                    break;
+        if(isset($_SESSION['user']['tipe_user']))  {
+            if ($_SESSION['user']['tipe_user'] != 'penyelenggara' ) {
+                return redirect()->to(base_url($_SESSION['user']['tipe_user']));
             }
         }
         /**
-         * Tampilkan session
+         * Tampilkan view
          */
         $data = [
             'title' => 'EVENTKITA | Halaman Penyelenggara '

@@ -15,7 +15,7 @@
   <div class="row justify-content-center">
     <div class="col-md-9 col-10">
       <form class="d-flex shadow" action="http://localhost/eventkita/public/peserta/cariEvent" method="POST">
-        <input class="form-control fs-md-4 p-md-3" type="text" placeholder="Cari event yang mau kamu ikuti.." aria-label="Search" name="search"/>
+        <input class="form-control fs-md-4 p-md-3" type="text" placeholder="Cari event yang mau kamu ikuti.." aria-label="Search" name="search" />
         <button class="btn btn-primary" type="submit" style="width: 100px;">
           <i class="bi bi-search fs-3"></i>
         </button>

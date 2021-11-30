@@ -22,13 +22,9 @@ class Peserta extends BaseController
          * Periksa variabel session, 
          * pastikan yang boleh mengakses controller ini hanya user dengan role peserta saja
         */
-        if(isset($_SESSION['user']['tipe_user'])) 
-        {
-            switch ($_SESSION['user']['tipe_user']) 
-            {
-                case 'penyelenggara':
-                    return redirect()->to(base_url('penyelenggara'));
-                    break;
+        if(isset($_SESSION['user']['tipe_user']))  {
+            if ($_SESSION['user']['tipe_user'] != 'penyelenggara' ) {
+                return redirect()->to(base_url($_SESSION['user']['tipe_user']));
             }
         }
         /**

@@ -21,7 +21,6 @@ class Home extends BaseController
                     break;
                 case 'penyelenggara':
                     return redirect()->to(base_url('penyelenggara'));
-                    return 'aku penyelenggara';
                 break;
             }
         }

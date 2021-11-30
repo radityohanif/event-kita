@@ -28,15 +28,7 @@ class Login extends BaseController
         */
         if(isset($_SESSION['user']['tipe_user'])) 
         {
-            switch ($_SESSION['user']['tipe_user']) 
-            {
-                case 'peserta':
-                    return redirect()->to(base_url('/peserta'));
-                    break;
-                case 'penyelenggara':
-                    return redirect()->to(base_url('/penyelenggara'));
-                    break;
-            }
+            return redirect()->to(base_url($_SESSION['user']['tipe_user']));
         }
         /**
          * Tampilkan view
@@ -69,12 +61,16 @@ class Login extends BaseController
             {
                 case 'peserta':
                     $_SESSION['user'] += $this->pesertaModel->getPeserta($_SESSION['user']['username']);
-                    return redirect()->to(base_url('/peserta'));
+                    return redirect()->to(base_url('peserta'));
                     break;
                 
                 case 'penyelenggara':
                     $_SESSION['user'] += $this->penyelenggaraModel->getPenyelenggara($_SESSION['user']['username']);
-                    return redirect()->to(base_url('/penyelenggara'));
+                    return redirect()->to(base_url('penyelenggara'));
+                    break;
+                
+                case 'admin':
+                    return redirect()->to(base_url('admin'));
                     break;
             }
             
