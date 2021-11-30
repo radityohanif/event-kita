@@ -11,20 +11,27 @@ d($daftar_event_pengajuan);
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="<?= base_url('style/global.css') ?>">
 
   <title>Dashboard Admin</title>
 </head>
 
-<body>
+<body class="bg-kuning">
   <div class="container mt-3">
     <div class="row">
+      <div class="col-10">
+        <h1 class="text-coklat">Hello Admin</h1>
+        <h3 class="text-coklat">Daftar Pengajuan Event :</h3>
+      </div>
+      <div class="col-2">
+        <a href="<?= base_url('logout'); ?>" class="btn btn-outline-danger justify-content-end">Logout</a>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
-        <h1>Hello Admin</h1>
-        <a href="<?= base_url('logout'); ?>">Logout</a>
-        <h3>Berikut adalah daftar pengajuan event :</h3>
-        <table class="table fs-5 mt-3 border border-dark border-2">
+      <table class="table fs-5 mt-3 border border-dark border-2">
           <thead>
-            <tr class="table-dark">
+            <tr class="table-dark text-center">
               <th scope="col">ID</th>
               <th scope="col">Penyelenggara</th>
               <th scope="col">Poster</th>
@@ -44,15 +51,14 @@ d($daftar_event_pengajuan);
                 </a>
               </td>
               <td class="align-middle">
-                <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" height="300">
+                <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" height="300" width="300">
               </td>
               <td class="align-middle">
-
+                <?= $event['nama']; ?>
               </td>
               <td class="align-middle">
                 <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example">
-                  <button type="button" class="mb-3 btn btn-danger">Blokir</button>
-                  <button type="button" class="mb-3 btn btn-primary">Setujui</button>
+                  <a target="_blank" href="<?= base_url('admin/detail/'.$event['id']) ?>" class="mb-3 btn btn-primary">Lihat Detail</a>
                 </div>
               </td>
             </tr>

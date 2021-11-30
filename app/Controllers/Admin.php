@@ -32,5 +32,14 @@ class Admin extends BaseController
     ];
     return view('admin/index', $data);
   }
+
+  public function detail($id){
+    $data = [
+      'judul' => 'EVENTKITA | Detail Event',
+      'event' => $this->eventModel->getEvent($id)
+    ];
+    return view('admin/detail', $data);
+  }
+  
   
 }
