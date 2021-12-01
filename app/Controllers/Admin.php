@@ -26,6 +26,9 @@ class Admin extends BaseController
           return redirect()->to(base_url($_SESSION['user']['tipe_user']));
         }
     }
+    else {
+      return redirect()->to(base_url());
+    }
     
     $data = [
       'daftar_event_pengajuan' => $this->eventModel->getEvent(false, false)
