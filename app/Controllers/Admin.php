@@ -40,6 +40,24 @@ class Admin extends BaseController
     ];
     return view('admin/detail', $data);
   }
+
+  public function process() 
+  {
+    /**
+     * Ambil data dari form
+     */
+    $id = $this->request->getVar('id');
+    $status = $this->request->getVar('status');
   
-  
+    switch ($status) {
+      case 'setuju':
+        $this->eventModel->update($id, ['disetujui' => 1]);
+        break;
+      case 'tolak':
+        $this->eventModel->update($id, ['disetujui' => 0]);
+        break;
+    }
+    
+    return redirect()->to(base_url('admin'));
+  }
 }
