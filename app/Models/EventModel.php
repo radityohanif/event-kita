@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class EventModel extends Model 
 {
     protected $table            = 'event';
-    protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'disetujui'];
+    protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'status'];
     
     public function getEvent($id = false, $disetujui = false)
     {
@@ -17,14 +17,14 @@ class EventModel extends Model
                 /**
                  * Ambil Seluruh Event yang belum disetujui oleh admin
                  */
-                return $this->where(['disetujui' => 0])
+                return $this->where(['status' => 0])
                             ->findAll();
             }
             else {
                 /**
                  * Ambil Seluruh Event yang sudah disetujui oleh admin
                  */
-                return $this->where(['disetujui' => 1])
+                return $this->where(['status' => 1])
                             ->findAll();
             }
         }

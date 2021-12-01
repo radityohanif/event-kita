@@ -54,10 +54,10 @@ class Admin extends BaseController
   
     switch ($status) {
       case 'setuju':
-        $this->eventModel->update($id, ['disetujui' => 1]);
+        $this->eventModel->update($id, ['status' => 1]);
         break;
       case 'tolak':
-        $this->eventModel->update($id, ['disetujui' => 0]);
+        $this->eventModel->update($id, ['status' => -1]);
         break;
     }
     
