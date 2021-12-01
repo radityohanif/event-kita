@@ -29,7 +29,7 @@ d($daftar_event_pengajuan);
     </div>
     <div class="row">
       <div class="col">
-      <table class="table fs-5 mt-3 border border-dark border-2">
+        <table class="table fs-5 mt-3 border border-dark border-2">
           <thead>
             <tr class="table-dark text-center">
               <th scope="col">ID</th>
