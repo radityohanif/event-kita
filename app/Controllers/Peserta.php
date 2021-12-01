@@ -27,6 +27,9 @@ class Peserta extends BaseController
                 return redirect()->to(base_url($_SESSION['user']['tipe_user']));
             }
         }
+        else {
+            return redirect()->to(base_url());
+        }
         /**
          * Tampilkan view
          */
