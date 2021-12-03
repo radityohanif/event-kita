@@ -60,7 +60,9 @@ class Login extends BaseController
             switch ($_SESSION['user']['tipe_user']) 
             {
                 case 'peserta':
-                    $_SESSION['user'] += $this->pesertaModel->getPeserta($_SESSION['user']['username']);
+                    $peserta = $this->pesertaModel->getPeserta($_SESSION['user']['username']);
+                    $_SESSION['user'] += $peserta;
+                    $_SESSION['user']['id'] = $peserta['id'];
                     return redirect()->to(base_url('peserta'));
                     break;
                 

@@ -76,6 +76,27 @@ class Peserta extends BaseController
             'title' => 'Detail Event',
             'event' => $this->eventModel->getEvent($id, true)
         ];
+        // Buat format jadwal event menggunakan model
+        $jadwalEvent = $this->eventModel->setJadwalEvent(
+            $data['event']['tanggal'],
+            $data['event']['waktu']
+        );
+
+        // push jadwal event kedalam data agar bisa ditampilkan di view
+        $data += ['jadwalEvent' => $jadwalEvent];
+        
         return view('peserta/detail', $data);
+    }
+
+    public function daftar()
+    {
+        $id_event = $this->request->getVar('id');
+        $this->pesertaModel->daftarEvent($id_event);
+        return redirect()->to(base_url('peserta/daftarEvent'));
+    }
+
+    public function eventSaya()
+    {
+        dd($_SESSION['user']['event_saya']);
     }
 }

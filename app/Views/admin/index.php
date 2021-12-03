@@ -30,7 +30,7 @@
       <div class="col">
         <table class="table table-hover mt-4 shadow" style="background-color: white;">
           <thead style="line-height:40px">
-            <tr class="table table-dark">
+            <tr class="table table-dark fs-5 text-center">
               <th scope="col">ID</th>
               <th scope="col">Penyelenggara</th>
               <th scope="col">Poster</th>
@@ -50,7 +50,7 @@
               <td class="align-middle">
                 <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" height="300" width="300">
               </td>
-              <td class="align-middle">
+              <td class="align-middle fw-bolder">
                 <?= $event['nama']; ?>
               </td>
               <td class="align-middle">

@@ -45,7 +45,7 @@
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-calendar"></i> Mulai</p>
-          <p>Senin, 23 Februari 2022</p>
+          <p><?= $jadwalEvent; ?></p>
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-people-fill"></i> Kuota Tersisa</p>
@@ -63,7 +63,10 @@
       <div class="container">
         <div class="row justify-content-center mb-4">
           <div class="col">
-            <button class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>
+            <form action="<?= base_url('peserta/daftar'); ?>" method="POST">
+              <input type="hidden" value="<?= $event['id']; ?>" name="id">
+              <button type="submit" class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>
+            </form>
           </div>
         </div>
       </div>
