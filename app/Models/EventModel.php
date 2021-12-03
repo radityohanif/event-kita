@@ -58,4 +58,45 @@ class EventModel extends Model
         }
         return $hasil;
     }
+
+    protected function formatHari($day)
+    {
+        switch ($day) {
+            case 'Sat':
+                $day = 'Sabtu';
+                break;
+        }
+
+        return $day;
+    }
+
+    protected function formatBulan($month)
+    {
+        switch ($month) {
+            case 'Dec':
+                $month = 'Desember';
+                break;
+        }
+
+        return $month;
+    }
+
+    public function setJadwalEvent($hari, $waktu)
+    {
+        $day = date('D', strtotime($hari));
+        $tanggal = date('j', strtotime($hari));
+        $tahun = date('Y', strtotime($hari));
+        $month = date('M', strtotime($hari));
+        $time = date('H:i', strtotime($waktu));
+
+        // Ubah format menjadi bahasa indonesia
+        $day = $this->formatHari($day);
+        $month = $this->formatBulan($month);
+
+        /**
+         * Contoh Output :
+         * Sabtu, 13 Januari 2021, Pukul 08:00
+         */
+        return $day . ', ' . $tanggal . ' ' . $month . ' ' . $tahun . ' ' . 'Pukul ' . $time;
+    }
 }

@@ -36,11 +36,26 @@ class Admin extends BaseController
     return view('admin/index', $data);
   }
 
-  public function detail($id){
+  public function detail(){
     $data = [
       'judul' => 'EVENTKITA | Detail Event',
-      'event' => $this->eventModel->getEvent($id)
+      'event' => $this->eventModel->getEvent($this->request->getVar('id')),
     ];
+    
+    // Buat format jadwal event menggunakan model
+    $jadwalEvent = $this->eventModel->setJadwalEvent(
+      $data['event']['tanggal'],
+      $data['event']['waktu']
+    );
+
+     /**
+     * Dokumentasi Push Array Asosiatif
+     * https://www.codegrepper.com/code-examples/php/php+associative+array+push
+     */
+
+    // push jadwal event kedalam data agar bisa ditampilkan di view
+    $data += ['jadwalEvent' => $jadwalEvent];
+    
     return view('admin/detail', $data);
   }
 

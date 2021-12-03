@@ -55,7 +55,10 @@
               </td>
               <td class="align-middle">
                 <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example">
-                  <a target="_blank" href="<?= base_url('admin/detail/'.$event['id']) ?>" class="mb-3 btn btn-primary">Lihat Detail</a>
+                  <form action="<?= base_url('admin/detail'); ?>" method="POST">
+                    <input type="hidden" value="<?= $event['id']; ?>" name="id">
+                    <button type="submit" class="mb-3 btn btn-primary">Lihat Detail</button>
+                  </form>
                 </div>
               </td>
               </tr>

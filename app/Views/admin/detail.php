@@ -1,13 +1,3 @@
-<?php
-$timestamp = strtotime($event['tanggal']);
-$day = date('D', $timestamp);
-
-$timestamp = strtotime($event['waktu']);
-$time = date('H:i', $timestamp);
-
-$jadwalEvent = $day . ', ' . $time;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
