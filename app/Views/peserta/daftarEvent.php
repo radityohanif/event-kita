@@ -33,7 +33,7 @@
         $status = $statusMulai[$index];
       ?>
       <div class="col-md-4 my-3">
-        <a href="#">
+        <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
           <div class="card shadow">
             <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
             <div class="card-body">

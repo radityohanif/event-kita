@@ -68,5 +68,14 @@ class Peserta extends BaseController
             'statusMulai' => $this->eventModel->cekWaktu($hasilquery)
         ];
         return view('peserta/daftarEvent', $data);
-    }   
+    }  
+
+    public function detail($id)
+    {
+        $data = [
+            'title' => 'Detail Event',
+            'event' => $this->eventModel->getEvent($id, true)
+        ];
+        return view('peserta/detail', $data);
+    }
 }
