@@ -132,7 +132,7 @@ class Penyelenggara extends BaseController
             'waktu' => $this->request->getVar('waktu'),
             'kuota' => $this->request->getVar('kuota'),
             'link_meet' => $this->request->getVar('link'),
-            'deskripsi' => $this->request->getVar('deskripsi'),
+            'deskripsi' => nl2br($this->request->getVar('deskripsi')),
             'poster' => $filePoster->getName(),
             'username_penyelenggara' => $_SESSION['user']['username']
         ]);
