@@ -31,11 +31,13 @@ class Peserta extends BaseController
             return redirect()->to(base_url());
         }
         /**
-         * Tampilkan view
+         * Siapkan data
          */
         $data = [
-            'title' => 'EVENTKITA | Halaman Peserta '
+            'title' => 'EVENTKITA | Halaman Peserta ',
+            'event_populer' => $this->eventModel->getEventPopuler()
         ];
+        
         return view('peserta/index', $data);
     }
 

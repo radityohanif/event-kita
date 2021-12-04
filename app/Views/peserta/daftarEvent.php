@@ -26,7 +26,7 @@
 
   <!-- Daftar Event -->
   <div class="container mt-5">
-    <div class="row mt-5 justify-content-center">
+    <div class="row mt-5 justify-content-start">
       <?php 
         $index = 0;
         foreach($daftar_event as $event): 
@@ -35,7 +35,7 @@
       <div class="col-md-4 my-3">
         <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
           <div class="card shadow">
-            <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
+            <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
             <div class="card-body">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
               <?php if($status == 'Sudah Mulai')
@@ -52,6 +52,9 @@
                 <br />
                 <i class="bi bi-person-fill"></i>
                 <?= $event['kuota']; ?> Kuota Peserta
+                <br />
+                <i class="bi bi-person-fill"></i>
+                <?= $event['jumlah_pendaftar']; ?> Pendaftar
               </p>
             </div>
           </div>

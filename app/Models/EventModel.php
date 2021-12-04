@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use CodeIgniter\Database\Query;
 use CodeIgniter\Model;
 
 class EventModel extends Model 
 {
     protected $table            = 'event';
-    protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'status'];
+    protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'status', 'jumlah_pendaftar'];
     
     public function getEvent($id = false, $disetujui = false)
     {
@@ -116,5 +117,14 @@ class EventModel extends Model
          * Sabtu, 13 Januari 2021, Pukul 08:00
          */
         return $day . ', ' . $tanggal . ' ' . $month . ' ' . $tahun . ' ' . 'Pukul ' . $time;
+    }
+
+    public function getEventPopuler()
+    {
+        $db      = \Config\Database::connect();
+        $builder = $db->table('event');
+        $builder->orderBy('jumlah_pendaftar', 'DESC')->limit(3);
+        $query   = $builder->get()->getResultArray();
+        return $query;
     }
 }
