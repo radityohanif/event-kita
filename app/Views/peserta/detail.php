@@ -72,16 +72,25 @@
       <div class="container">
         <div class="row justify-content-center mb-4">
           <div class="col">
+            <?php  
+              if(in_array($event['id'], $eventSaya)) 
+              {
+                echo '<a target="blank" href="https://'.$event['link_meet'].'" class="btn btn-success container-fluid fs-5 fw-bold py-3">Enter Meeting</a>';
+              }
+            ?>
             <form action="<?= base_url('peserta/daftar'); ?>" method="POST">
               <input type="hidden" value="<?= $event['id']; ?>" name="id">
               <?php 
-                if($statusMulai == 'Sudah Mulai')
+                if(!in_array($event['id'], $eventSaya)) 
                 {
-                  echo '<button type="submit" class="btn btn-secondary container-fluid fs-5 fw-bold py-3 disabled">Daftar</button>';
-                } 
-                else 
-                {
-                  echo '<button type="submit" class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>';
+                  if($statusMulai == 'Sudah Mulai') 
+                  {
+                    echo '<button type="submit" class="btn btn-secondary container-fluid fs-5 fw-bold py-3 disabled">Daftar</button>';
+                  } 
+                  else 
+                  {
+                    echo '<button type="submit" class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>';
+                  }
                 }
               ?>
             </form>

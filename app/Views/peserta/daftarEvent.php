@@ -1,17 +1,36 @@
-<?= 
-  /**
-   * Pilih Template View !!
-   */
-  // $this->extend('layout/template'); 
-  $this->extend('layout/peserta/template'); 
-  // $this->extend('layout/peyelenggara/template'); 
-?>
-
+<?= $this->extend('layout/peserta/template'); ?>
 <?= $this->section('content'); ?>
 
 <body class="bg-kuning">
+
+  <!-- Flasher message-->
+  <div class="row mt-100 justify-content-center">
+    <div class="col-10">
+      <div class="mb-3">
+        <?php if (session()->getFlashdata('error')): ?>
+        <div class="row mt-5">
+          <div class="alert alert-danger" role="alert">
+            <?= session()->getFlashdata('error'); ?>
+          </div>
+        </div>
+        <?php endif; ?>
+      </div>
+
+      <div class="mb-3">
+        <?php if (session()->getFlashdata('success')): ?>
+        <div class="row mt-5">
+          <div class="alert alert-success" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+          </div>
+        </div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Flasher message-->
+
   <!-- Search -->
-  <h2 class="mt-150 text-center text-coklat fw-bolder mb-4">DAFTAR EVENT</h2>
+  <h1 class="mt-150 text-center text-coklat fw-bolder mb-4">DAFTAR EVENT</h1>
   <div class="row justify-content-center">
     <div class="col-md-9 col-10">
       <form class="d-flex shadow" action="http://localhost/eventkita/public/peserta/cariEvent" method="POST">
