@@ -48,16 +48,25 @@
           <p><?= $jadwalEvent; ?></p>
         </div>
         <div class="col-md-4 mb-4">
-          <p class="fw-bold"><i class="bi bi-people-fill"></i> Kuota Tersisa</p>
+          <p class="fw-bold"><i class="bi bi-people-fill"></i> Kuota tersisa</p>
           <p>280 Orang</p>
         </div>
         <div class="col-md-4 mb-4">
-          <p class="fw-bold"><i class="bi bi-person-fill"></i> Peserta</p>
+          <p class="fw-bold"><i class="bi bi-person-fill"></i> Mengikuti</p>
           <p>78 Orang</p>
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-info-circle-fill"></i> Status</p>
-          <span class="badge bg-primary">Belum Mulai</span>
+          <?php 
+            if($statusMulai == 'Sudah Mulai')
+            {
+              echo '<span class="badge bg-danger">Sudah Mulai</span>';
+            } 
+            else 
+            {
+              echo '<span class="badge bg-primary">Belum Mulai</span>';
+            }
+          ?>
         </div>
       </div>
       <div class="container">
@@ -65,7 +74,16 @@
           <div class="col">
             <form action="<?= base_url('peserta/daftar'); ?>" method="POST">
               <input type="hidden" value="<?= $event['id']; ?>" name="id">
-              <button type="submit" class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>
+              <?php 
+                if($statusMulai == 'Sudah Mulai')
+                {
+                  echo '<button type="submit" class="btn btn-secondary container-fluid fs-5 fw-bold py-3 disabled">Daftar</button>';
+                } 
+                else 
+                {
+                  echo '<button type="submit" class="btn btn-primary container-fluid fs-5 fw-bold py-3">Daftar</button>';
+                }
+              ?>
             </form>
           </div>
         </div>

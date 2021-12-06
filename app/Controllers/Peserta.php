@@ -51,11 +51,12 @@ class Peserta extends BaseController
 
     public function daftarEvent() 
     {
-        $hasilquery = $this->eventModel->getEvent(false, true);
+        $daftar_event = $this->eventModel->getEvent(false, true);
         $data = [
             'title' => 'EVENTKITA | Daftar Event',
-            'daftar_event' => $hasilquery,
-            'statusMulai' => $this->eventModel->cekWaktu($hasilquery)
+            'daftar_event' => $daftar_event,
+            'jadwal_event' => $this->eventModel->setJadwalEvents($daftar_event),
+            'statusMulai' => $this->eventModel->cekWaktu($daftar_event)
         ];
         return view('peserta/daftarEvent', $data);
     }
@@ -78,14 +79,19 @@ class Peserta extends BaseController
             'title' => 'Detail Event',
             'event' => $this->eventModel->getEvent($id, true)
         ];
-        // Buat format jadwal event menggunakan model
-        $jadwalEvent = $this->eventModel->setJadwalEvent(
-            $data['event']['tanggal'],
-            $data['event']['waktu']
-        );
+        
+        # Buat format jadwal event menggunakan model
+        $jadwalEvent = $this->eventModel->setJadwalEvents([$data['event']]);
 
-        // push jadwal event kedalam data agar bisa ditampilkan di view
-        $data += ['jadwalEvent' => $jadwalEvent];
+        # Status Mulai
+        $statusMulai = $this->eventModel->cekWaktu([$data['event']]);
+
+        # push
+        $data += [
+            'jadwalEvent' => $jadwalEvent[0],
+            'statusMulai' => $statusMulai[0]
+        ];
+
         
         return view('peserta/detail', $data);
     }
@@ -99,6 +105,6 @@ class Peserta extends BaseController
 
     public function eventSaya()
     {
-        dd($_SESSION['user']['event_saya']);
+        dd($this->pesertaModel->getEventSaya());
     }
 }

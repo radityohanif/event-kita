@@ -48,13 +48,10 @@
               ?>
               <p class="card-text mt-3">
                 <i class="bi bi-calendar-date-fill"></i>
-                Jum’at, 15 Oktober 2021 08.00
+                <?= $jadwal_event[$index]; ?>
                 <br />
                 <i class="bi bi-person-fill"></i>
-                <?= $event['kuota']; ?> Kuota Peserta
-                <br />
-                <i class="bi bi-person-fill"></i>
-                <?= $event['jumlah_pendaftar']; ?> Pendaftar
+                <?= $event['jumlah_pendaftar']; ?> Peserta
               </p>
             </div>
           </div>

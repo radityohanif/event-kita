@@ -24,7 +24,7 @@
     <div class="row mt-5 justify-content-center">
       <?php foreach($event_populer as $event): ?>
       <div class="col-md-4 my-3">
-        <a href="detailEvent.html">
+        <a href="<?= base_url('peserta/detail/' . $event['id']); ?>">
           <div class="card shadow">
             <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
             <div class="card-body">
@@ -35,7 +35,7 @@
                 Jum’at, 15 Oktober 2021 08.00
                 <br />
                 <i class="bi bi-person-fill"></i>
-                <?= $event['jumlah_pendaftar']; ?> Pendaftar
+                <?= $event['jumlah_pendaftar']; ?> Peserta
               </p>
             </div>
           </div>

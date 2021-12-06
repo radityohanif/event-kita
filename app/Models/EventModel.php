@@ -119,6 +119,16 @@ class EventModel extends Model
         return $day . ', ' . $tanggal . ' ' . $month . ' ' . $tahun . ' ' . 'Pukul ' . $time;
     }
 
+    public function setJadwalEvents($daftar_event)
+    {
+        $result = [];
+        foreach($daftar_event as $event)
+        {
+            array_push($result, $this->setJadwalEvent($event['tanggal'], $event['waktu']));
+        }
+        return $result;
+    }
+
     public function getEventPopuler()
     {
         $db      = \Config\Database::connect();
