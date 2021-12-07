@@ -22,64 +22,30 @@
       <h2 class="text-coklat text-center fw-bolder">EVENT POPULAR</h2>
     </div>
     <div class="row mt-5 justify-content-center">
+      <?php foreach($event_populer as $event): ?>
       <div class="col-md-4 my-3">
-        <a href="detailEvent.html">
+        <a href="<?= base_url('login'); ?>">
           <div class="card shadow">
-            <img src="img/poster webinar/1.jpg" class="card-img-top" alt="..." />
+            <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title">Dasar Pemrograman Python</h5>
+              <h5 class="card-title"><?= $event['nama']; ?></h5>
               <span class="badge bg-primary">Belum Mulai</span>
               <p class="card-text mt-3">
                 <i class="bi bi-calendar-date-fill"></i>
                 Jum’at, 15 Oktober 2021 08.00
                 <br />
                 <i class="bi bi-person-fill"></i>
-                208 Pendaftar
+                <?= $event['jumlah_pendaftar']; ?> Peserta
               </p>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-md-4 my-3">
-        <a href="detailEvent.html">
-          <div class="card shadow">
-            <img src="img/poster webinar/2.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Wireframe UI/UX Aplikasi</h5>
-              <span class="badge bg-primary">Belum Mulai</span>
-              <p class="card-text mt-3">
-                <i class="bi bi-calendar-date-fill"></i>
-                Minggu, 17 Oktober 2021 09.00
-                <br />
-                <i class="bi bi-person-fill"></i>
-                150 Pendaftar
-              </p>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-4 my-3">
-        <a href="detailEvent.html">
-          <div class="card shadow">
-            <img src="img/poster webinar/3.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Cloud Computing</h5>
-              <span class="badge bg-primary">Belum Mulai</span>
-              <p class="card-text mt-3">
-                <i class="bi bi-calendar-date-fill"></i>
-                Senin, 20 Oktober 2021 20.00
-                <br />
-                <i class="bi bi-person-fill"></i>
-                550 Pendaftar
-              </p>
-            </div>
-          </div>
-        </a>
-      </div>
+      <?php endforeach; ?>
     </div>
     <div class="row mt-5 justify-content-center">
       <div class="col-4">
-        <a href="cariEvent.html" class="btn btn-coklat container-fluid fw-bold py-3"> LIHAT SEMUA EVENT </a>
+        <a href="<?= base_url('peserta/daftarEvent'); ?>" class="btn btn-coklat container-fluid fw-bold py-3"> LIHAT SEMUA EVENT </a>
       </div>
     </div>
   </div>

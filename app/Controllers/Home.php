@@ -2,8 +2,15 @@
 
 namespace App\Controllers;
 
+use App\Models\EventModel;
+
 class Home extends BaseController
 {
+    protected $eventModel;
+
+    public function __construct(){
+        $this->eventModel = new EventModel();
+    }
 
     public function index()
     {
@@ -20,7 +27,8 @@ class Home extends BaseController
          * Tampilkan view
          */
         $data = [
-            'title' => 'EVENTKITA | Online Event Organizer for everyone '
+            'title' => 'EVENTKITA | Online Event Organizer for everyone ',
+            'event_populer' => $this->eventModel->getEventPopuler()
         ];
         return view('home/index', $data);
     }

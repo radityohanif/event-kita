@@ -5,7 +5,7 @@
   <div class="row align-items-center">
     <!-- Gambar Cover Samping Kiri -->
     <div class="col-6">
-      <img class="img-fluid" src="<?= base_url("img/cover.jpg")?>" alt="Cover">
+      <img class="img-fluid" src="<?= base_url("img/signupcover.jpg")?>" alt="Cover"  style="height:100%;">
     </div>
     <!-- Gambar Cover Samping Kiri -->
 
