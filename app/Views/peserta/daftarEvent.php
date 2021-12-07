@@ -2,6 +2,13 @@
 <?= $this->section('content'); ?>
 
 <body class="bg-kuning">
+  <style>
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1rem 1rem;
+      height: 200px;
+    }
+  </style>
 
   <!-- Flasher message-->
   <div class="row mt-100 justify-content-center">
@@ -54,8 +61,8 @@
       <div class="col-md-4 my-3">
         <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
           <div class="card shadow">
-            <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
-            <div class="card-body">
+            <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
+            <div class="card-body" style="" >
               <h5 class="card-title"><?= $event['nama']; ?></h5>
               <?php if($status == 'Sudah Mulai')
                 {

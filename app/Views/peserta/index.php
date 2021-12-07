@@ -2,7 +2,13 @@
 <?= $this->section('content'); ?>
 
 <body class="bg-kuning">
-
+  <style>
+    .card-body {
+      flex: 1 1 auto;
+      padding: 1rem 1rem;
+      height: 200px;
+    }
+  </style>
   <!-- Jumbotron -->
   <div class="container mt-150">
     <div class="row justify-content-center">
@@ -26,7 +32,7 @@
       <div class="col-md-4 my-3">
         <a href="<?= base_url('peserta/detail/' . $event['id']); ?>">
           <div class="card shadow">
-            <img src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
+            <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
               <span class="badge bg-primary">Belum Mulai</span>

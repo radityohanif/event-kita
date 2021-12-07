@@ -36,7 +36,7 @@
       </div>
       <div class="row fs-5 mx-md-5 my-2">
         <div class="col-md-4 mb-4">
-          <p class="fw-bold"><i class="bi bi-building"></i> Partner Event</p>
+          <p class="fw-bold"><i class="bi bi-building"></i> Penyelenggara Event</p>
           <a href="#" class="my-link">
             <u>
               <?= $event['username_penyelenggara']; ?>

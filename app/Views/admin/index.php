@@ -13,7 +13,7 @@
   <title>Dashboard Admin</title>
 </head>
 
-<body class="bg-kuning">
+<body class="bg-kuning" style="height:100%; overflow:none;">
   <div class="container mt-3">
     <div class="row">
       <div class="col">
