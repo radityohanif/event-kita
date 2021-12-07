@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\EventModel;
 use App\Models\PesertaModel;
+use Config\Database;
 
 class Peserta extends BaseController
 {
@@ -102,6 +103,12 @@ class Peserta extends BaseController
     {
         $id_event = $this->request->getVar('id');
         $this->pesertaModel->daftarEvent($id_event);
+        
+        // update jumlah pendaftar di tabel event
+        $db = Database::connect();
+        $sql = "UPDATE `event` SET `jumlah_pendaftar` = jumlah_pendaftar + 1 WHERE `event`.`id` = $id_event;";
+        $db->query($sql);
+        
         session()->setFlashdata('success', 'Kamu berhasil mendaftar event, silahkan liat di menu event saya 😀');
         return redirect()->to(base_url('peserta/daftarEvent'));
     }

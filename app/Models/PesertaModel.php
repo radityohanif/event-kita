@@ -24,7 +24,6 @@ class PesertaModel extends Model
     public function daftarEvent($id_event)
     {
         $eventSaya = $this->getEventSaya();
-        // event belum terdaftar
         array_push($eventSaya,  $id_event);
         $eventSaya = implode(",", $eventSaya);    # ubah array menjadi string
         $this->update(

@@ -49,11 +49,11 @@
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-people-fill"></i> Kuota tersisa</p>
-          <p>280 Orang</p>
+          <p><?= $event['kuota']; ?> Orang</p>
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-person-fill"></i> Mengikuti</p>
-          <p>78 Orang</p>
+          <p><?= $event['jumlah_pendaftar']; ?> Orang</p>
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-info-circle-fill"></i> Status</p>
