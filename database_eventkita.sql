@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2021 at 08:32 AM
+-- Generation Time: Dec 07, 2021 at 03:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -46,14 +46,14 @@ CREATE TABLE `event` (
 --
 
 INSERT INTO `event` (`id`, `username_penyelenggara`, `nama`, `tanggal`, `waktu`, `kuota`, `jumlah_pendaftar`, `link_meet`, `deskripsi`, `poster`, `status`) VALUES
-(1, 'upnvj', 'Introduction UX DESIGN', '2021-12-10', '12:00:00.000000', 120, 0, 'meet.google.com/new', 'Introduction UX DESIGN with Zahrah Arissa UX Designer of Tokopedia', 'intro ux design.jpg', 1),
+(1, 'upnvj', 'Introduction UX DESIGN', '2021-12-10', '12:00:00.000000', 120, 4, 'meet.google.com/new', 'Introduction UX DESIGN with Zahrah Arissa UX Designer of Tokopedia', 'intro ux design.jpg', 1),
 (2, 'upnvj', 'Penulisan Buku Ilmiah Dari Hasil Karya Mahasiswa', '2021-12-02', '21:00:00.000000', 100, 0, 'meet.google.com/new', 'Penulisan Buku Ilmiah Dari Hasil Karya Mahasiswa, Gratis Sertifikat dan Makanan', 'seminar penulisan  buku ilmiah mahasiswa.jpeg', 1),
-(3, 'upnvj', 'Workshop Fotografi dan Desain Grafis', '2021-12-16', '22:00:00.000000', 50, 0, 'meet.google.com/new', 'Workshop Fotografi dan Desain Grafis', 'workshop desain grafis.jpg', 1),
+(3, 'upnvj', 'Workshop Fotografi dan Desain Grafis', '2021-12-16', '22:00:00.000000', 50, 1, 'meet.google.com/new', 'Workshop Fotografi dan Desain Grafis', 'workshop desain grafis.jpg', 1),
 (4, 'pengepul', 'Sekolah Madrasah Tanggap Covid19', '2021-12-08', '13:00:00.000000', 300, 0, 'meet.google.com/new', 'Sekolah Madrasah Tanggap Covid19', 'sekolah madrasah tanggap covid19.jpeg', 1),
-(5, 'pengepul', 'Penanggulangan Covid 19 Berbasis Pengetahuan dan Inovasi', '2021-12-15', '08:00:00.000000', 400, 70, 'meet.google.com/new', 'Penanggulangan Covid 19 Berbasis Pengetahuan dan Inovasi, -katadata', 'katadata.jpg', 1),
+(5, 'pengepul', 'Penanggulangan Covid 19 Berbasis Pengetahuan dan Inovasi', '2021-12-15', '08:00:00.000000', 400, 72, 'meet.google.com/new', 'Penanggulangan Covid 19 Berbasis Pengetahuan dan Inovasi, -katadata', 'katadata.jpg', 1),
 (6, 'pengepul', 'DIGITAL MARKETING : How to Optimize Your Online Business', '2021-12-04', '13:30:00.000000', 200, 150, 'meet.google.com/new', 'DIGITAL MARKETING : How to Optimize Your Online Business', 'WEBINAR-Digital-Marketing-How-To-Optimize-Your-Online-Business.jpg', 1),
 (7, 'upnvj', 'WEBINAR GURU BELAJAR : Adaptasi Pembelajaran di Masa Pandemi', '2022-01-01', '19:20:00.000000', 125, 0, 'meet.google.com/new', 'WEBINAR GURU BELAJAR : Adaptasi Pembelajaran di Masa Pandemi', 'webinar guru belajar.jpg', 1),
-(8, 'upnvj', 'How To Survive As A Graphic Designer During Pandemic', '2021-12-09', '13:00:00.000000', 150, 20, 'meet.google.com/new', 'Haaiii semua! ✌<br />\r\n<br />\r\nApakabar semuanya!<br />\r\nNih gue mau kasih kabar baik, buat kalian nih temen-temen media kreatif yang berkutat di organisasi dan sekitarnya baik yang emang sukarela maupun yang kepaksa..eh gimana?????. Anyway kali ini Us Creative akan berkolaborasi bersama PPIT Chengdu dalam acara webinar berjudul “How to Survive as a Graphic Designer During The pandemic.” Kita bakal sharing tentang gimana caranya survive ditengah-tengah masa pandemi ini sebagai seorang Graphic Designer. ????<br />\r\n <br />\r\nSAVE THE DATE‼️<br />\r\n???? Sabtu, 27 November 2021<br />\r\n⏰ 13.00-14.45<br />\r\n???? Zoom Meeting<br />\r\n<br />\r\nYuk yang emang lagi ga ada acara langsung cus aja daftar, gausah sok sibuk deh ????<br />\r\nhttps://bit.ly/ppitcduxuscreative<br />\r\n <br />\r\nSampai ketemu lagi di acara webinar nanti, dadah ✌', 'WhatsApp Image 2021-11-21 at 18.28.20.jpeg', 1);
+(8, 'upnvj', 'How To Survive As A Graphic Designer During Pandemic', '2021-12-09', '13:00:00.000000', 150, 21, 'meet.google.com/new', 'Haaiii semua! ✌<br />\r\n<br />\r\nApakabar semuanya!<br />\r\nNih gue mau kasih kabar baik, buat kalian nih temen-temen media kreatif yang berkutat di organisasi dan sekitarnya baik yang emang sukarela maupun yang kepaksa..eh gimana?????. Anyway kali ini Us Creative akan berkolaborasi bersama PPIT Chengdu dalam acara webinar berjudul “How to Survive as a Graphic Designer During The pandemic.” Kita bakal sharing tentang gimana caranya survive ditengah-tengah masa pandemi ini sebagai seorang Graphic Designer. ????<br />\r\n <br />\r\nSAVE THE DATE‼️<br />\r\n???? Sabtu, 27 November 2021<br />\r\n⏰ 13.00-14.45<br />\r\n???? Zoom Meeting<br />\r\n<br />\r\nYuk yang emang lagi ga ada acara langsung cus aja daftar, gausah sok sibuk deh ????<br />\r\nhttps://bit.ly/ppitcduxuscreative<br />\r\n <br />\r\nSampai ketemu lagi di acara webinar nanti, dadah ✌', 'WhatsApp Image 2021-11-21 at 18.28.20.jpeg', 1);
 
 -- --------------------------------------------------------
 
@@ -104,10 +104,11 @@ CREATE TABLE `peserta` (
 --
 
 INSERT INTO `peserta` (`id`, `username`, `email`, `nama`, `alamat`, `jk`, `no_hp`, `gambar_profil`, `tanggal_lahir`, `event_saya`) VALUES
-(1, 'hanif', 'radityo.hanif@gmail.com', 'Hanif Radityo', NULL, NULL, NULL, 'default.jpg', NULL, '1,3,5,7,8,8,4'),
+(1, 'hanif', 'radityo.hanif@gmail.com', 'Hanif Radityo', NULL, NULL, NULL, 'default.jpg', NULL, ',8,5'),
 (2, 'aicreation', 'aicreation@gmail.com', 'AI Creation', NULL, NULL, NULL, 'default.jpg', NULL, ''),
 (4, 'webinarcenter', 'webinar.center@gmail.com', 'Webinar Center', NULL, NULL, NULL, 'default.jpg', NULL, ''),
-(5, 'azy', 'azy@gmail.com', 'Azy Umardi Azhra', NULL, NULL, NULL, 'default.jpg', NULL, '');
+(5, 'azy', 'azy@gmail.com', 'Azy Umardi Azhra', NULL, NULL, NULL, 'default.jpg', NULL, ''),
+(6, 'udin', 'udin@gmail.com', 'Mamang Udin', NULL, NULL, NULL, 'default.jpg', NULL, ',1,5,3');
 
 -- --------------------------------------------------------
 
@@ -135,7 +136,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `tipe_user`) VALUES
 (5, 'admin', '$2y$10$fEe2ZodkMNrFrP716/grL.7uEvAsBI99XG2KSMdUkqBNnW1qhhVhq', 'admin.eventkita@gmail.com', 'admin'),
 (6, 'webinarcenter', '$2y$10$PoHGVCM/7OQDxuA5gfxsmey8EPcqWyXzo6/C.kjquqs0aJMJf6QKC', 'webinar.center@gmail.com', 'peserta'),
 (7, 'pengepul', '$2y$10$Mipp6nCKcCsLHnZe1O0KY.V3KS8cCFFgimCnSgNAj1l/yCdlHTvqa', 'pengepul@gmail.com', 'penyelenggara'),
-(8, 'azy', '$2y$10$gjtNIScu.ZXcjWKbYN5sxu6gFFLeYhneBJw8eroJNhEnF0rNZ6LnK', 'azy@gmail.com', 'peserta');
+(8, 'azy', '$2y$10$gjtNIScu.ZXcjWKbYN5sxu6gFFLeYhneBJw8eroJNhEnF0rNZ6LnK', 'azy@gmail.com', 'peserta'),
+(9, 'udin', '$2y$10$7CYT7fQNHBe/0pFn.uV42OFXaU.a7ZcVXtcD6diYfZfJg0gY8qa6.', 'udin@gmail.com', 'peserta');
 
 --
 -- Indexes for dumped tables
@@ -185,13 +187,13 @@ ALTER TABLE `penyelenggara`
 -- AUTO_INCREMENT for table `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
