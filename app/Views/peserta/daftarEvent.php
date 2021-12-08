@@ -78,7 +78,7 @@
         <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
           <div class="card shadow">
             <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
-            <div class="card-body" style="">
+            <div class="card-body">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
               <?php if($status == 'Sudah Mulai')
                 {

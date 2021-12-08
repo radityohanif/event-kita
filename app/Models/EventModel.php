@@ -137,4 +137,10 @@ class EventModel extends Model
         $query   = $builder->get()->getResultArray();
         return $query;
     }
+
+    public function getPengikut($username)
+    {
+        $this->builder->selectSum('jumlah_pendaftar')->where(['username_penyelenggara' => $username]);
+        return $this->builder->get()->getResultArray();
+    }
 }

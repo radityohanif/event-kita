@@ -34,9 +34,22 @@ class Penyelenggara extends BaseController
          * Tampilkan view
          */
         $data = [
-            'title' => 'EVENTKITA | Halaman Penyelenggara '
+            'title' => 'Dashboard ' . $_SESSION['user']['nama'] ,
+            'validator' => \Config\Services::validation(),
+            'daftar_event' => $this->eventModel->where(['username_penyelenggara' => $_SESSION['user']['username']])->findAll(),
+            'pengikut' => $this->eventModel->getPengikut($_SESSION['user']['username'])
         ];
-        return view('penyelenggara/index', $data);
+        
+        /**
+         * Menghitung jumlah pengikut
+         */
+
+        $data += [
+            'jadwal_event' => $this->eventModel->setJadwalEvents($data['daftar_event']),
+            'statusMulai' => $this->eventModel->cekWaktu($data['daftar_event'])
+        ];
+        
+        return view('penyelenggara/dashboard', $data);
     }
 
     public function profil()
@@ -48,15 +61,6 @@ class Penyelenggara extends BaseController
     }
 
     public function pengajuan()
-    {
-        $data = [
-            'title' => 'EVENTKITA | Pengajuan Event',
-            'validator' => \Config\Services::validation() 
-        ];
-        return view('penyelenggara/pengajuan', $data);
-    }
-
-    public function uploadPengajuan()
     {
         /** 
          * Validasi data input
@@ -113,7 +117,7 @@ class Penyelenggara extends BaseController
              * Jika validasi gagal, 
              * maka kirimkan pesan kesalahan ke view pengajuan event
              */
-            return redirect()->to(base_url('penyelenggara/pengajuan'))->withInput();
+            return redirect()->to(base_url('penyelenggara'))->withInput();
         }
         
         /**

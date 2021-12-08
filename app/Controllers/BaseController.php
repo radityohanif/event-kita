@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
+use Config\Database;
 use Config\Services;
 use Psr\Log\LoggerInterface;
 
@@ -37,6 +38,7 @@ class BaseController extends Controller
      * @var array
      */
     protected $helpers = [];
+    protected $db;
 
     /**
      * Constructor.
@@ -51,5 +53,6 @@ class BaseController extends Controller
         session();
 
         // E.g.: $this->session = \Config\Services::session();
+        $this->db = Database::connect();
     }
 }
