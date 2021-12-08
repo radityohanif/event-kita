@@ -81,6 +81,31 @@
         <p><?= implode("", $pengikut[0]); ?></p>
       </div>
     </div>
+    <!-- Flasher message-->
+    <?php if (session()->getFlashdata('danger')): ?>
+    <div class="mb-3">
+      <div class="row mt-5">
+        <div class="col">
+          <div class="alert alert-danger text-center" role="alert">
+            <?= session()->getFlashdata('danger'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>
+
+    <?php if (session()->getFlashdata('success')): ?>
+    <div class="mb-3">
+      <div class="row mt-5">
+        <div class="col">
+          <div class="alert alert-success text-center" role="alert">
+            <?= session()->getFlashdata('success'); ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php endif; ?>
+    <!-- Akhir Flasher message-->
   </div>
   <!-- Akhir Statistik -->
 

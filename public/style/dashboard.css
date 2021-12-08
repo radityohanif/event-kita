@@ -25,7 +25,7 @@
   border-radius: 200px;
   position: fixed;
   bottom: 50px;
-  right: 50px;
+  right: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,7 +35,7 @@
 }
 
 .float-button:hover {
-  background: royalblue;
+  background: #24a0ed ;
   color: white;
   transform: rotate(180deg);
 }
@@ -74,4 +74,11 @@ a {
 }
 a:hover {
   color: inherit;
+}
+
+.card-body {
+  transition: 0.5s;
+}
+.card:hover .card-body{
+  background: rgb(240, 240, 240);
 }
