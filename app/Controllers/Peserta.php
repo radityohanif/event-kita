@@ -66,11 +66,14 @@ class Peserta extends BaseController
     public function cariEvent()
     {
         $nama_event = $this->request->getVar('search'); 
-        $hasilquery = $this->eventModel->getEvent(false, true);
         $data = [
             'title' => 'EVENTKITA | Daftar Event',
             'daftar_event' => $this->eventModel->cari($nama_event),
-            'statusMulai' => $this->eventModel->cekWaktu($hasilquery)
+            'keyword' => $nama_event
+        ];
+        $data += [
+            'jadwal_event' => $this->eventModel->setJadwalEvents($data['daftar_event']),
+            'statusMulai' => $this->eventModel->cekWaktu($data['daftar_event'])
         ];
         return view('peserta/daftarEvent', $data);
     }  

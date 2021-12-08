@@ -5,13 +5,13 @@
   <div class="row align-items-center">
     <!-- Gambar Cover Samping Kiri -->
     <div class="col-6">
-      <img class="img-fluid" src="<?= base_url("img/signupcover.jpg")?>" alt="Cover"  style="height:100%;">
+      <img class="img-fluid" src="<?= base_url("img/signupcover.jpg")?>" alt="Cover">
     </div>
     <!-- Gambar Cover Samping Kiri -->
 
 
     <!-- Isi Form disebelah kanan -->
-    <div class="col-6">
+    <div class=" col-6">
       <div class="container">
         <!-- Judul Event Kita -->
         <a href="<?= base_url(); ?>">

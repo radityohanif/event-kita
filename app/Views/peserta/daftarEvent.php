@@ -3,11 +3,11 @@
 
 <body class="bg-kuning">
   <style>
-    .card-body {
-      flex: 1 1 auto;
-      padding: 1rem 1rem;
-      height: 200px;
-    }
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    height: 200px;
+  }
   </style>
 
   <!-- Flasher message-->
@@ -50,6 +50,22 @@
   </div>
   <!-- Search Akhir -->
 
+
+  <?php  
+  
+    if(count($daftar_event) == 0)
+    {
+      echo '
+      <div class="container text-center mt-5">
+      <div class="row">
+        <div class="col">
+          <h3 class="mt-5">Maaf🙏, Event dengan nama "'. $keyword .'" tidak ditemukan</h3>
+        </div>
+      </div>
+    </div>';
+    }
+  
+  ?>
   <!-- Daftar Event -->
   <div class="container mt-5">
     <div class="row mt-5 justify-content-start">
@@ -62,7 +78,7 @@
         <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
           <div class="card shadow">
             <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
-            <div class="card-body" style="" >
+            <div class="card-body" style="">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
               <?php if($status == 'Sudah Mulai')
                 {
