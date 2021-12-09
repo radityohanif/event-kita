@@ -67,7 +67,9 @@ class Login extends BaseController
                     break;
                 
                 case 'penyelenggara':
-                    $_SESSION['user'] += $this->penyelenggaraModel->getPenyelenggara($_SESSION['user']['username']);
+                    $penyelenggara = $this->penyelenggaraModel->getPenyelenggara($_SESSION['user']['username']);
+                    $_SESSION['user'] += $penyelenggara;
+                    $_SESSION['user']['id'] = $penyelenggara['id'];
                     return redirect()->to(base_url('penyelenggara'));
                     break;
                 

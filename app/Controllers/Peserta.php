@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\EventModel;
+use App\Models\PenyelenggaraModel;
 use App\Models\PesertaModel;
 use Config\Database;
 
@@ -10,11 +11,13 @@ class Peserta extends BaseController
 {
     protected $pesertaModel;
     protected $eventModel;
+    protected $penyelenggaraModel;
     
     public function __construct()
     {
         $this->pesertaModel = new PesertaModel();
         $this->eventModel = new EventModel();
+        $this->penyelenggaraModel = new PenyelenggaraModel();
     }
 
     public function index()
@@ -34,10 +37,15 @@ class Peserta extends BaseController
         /**
          * Siapkan data
          */
+        
         $data = [
             'title' => 'EVENTKITA | Halaman Peserta ',
-            'event_populer' => $this->eventModel->getEventPopuler()
+            'event_populer' => $this->eventModel->getEventPopuler(),
+            'jumlah_event' => count($this->eventModel->getEvent(false, true)),
+            'jumlah_peserta' => count($this->pesertaModel->findAll()),
+            'jumlah_penyelenggara' => count($this->penyelenggaraModel->findAll())
         ];
+        
         
         return view('peserta/index', $data);
     }
@@ -46,8 +54,49 @@ class Peserta extends BaseController
     {
         $data = [
             'title' => 'EVENTKITA | Profil Saya',
+            'profil' => $this->pesertaModel->find($_SESSION['user']['id'])
         ];
         return view('peserta/profil', $data);
+    }
+
+    public function edit()
+    {
+        $data = [
+            'title' => 'EVENTKITA | Profil Saya',
+            'profil' => $this->pesertaModel->find($_SESSION['user']['id'])
+        ];
+        return view('peserta/profilEdit', $data);
+    }
+
+    public function submitEdit()
+    {
+        $id = $_SESSION['user']['id'];
+        // ambil gambar
+        $fileFoto = $this->request->getFile('foto');
+        // pindahkan file ke folder img/foto profil
+        // dd($fileFoto);
+        if($fileFoto->getSize() != false){
+            $fileFoto->move('img/foto profil');
+            $this->pesertaModel->update(
+                $id, [
+                    'email' => $this->request->getVar('email'),
+                    'tanggal_lahir' => $this->request->getVar('tgl'),
+                    'no_hp' => $this->request->getVar('nomorhp'),
+                    'jk' => $this->request->getVar('jk'),
+                    'gambar_profil' => $fileFoto->getName()
+                    ]
+            );
+            return redirect()->to(base_url('peserta/profil'));
+        }
+        $this->pesertaModel->update(
+            $id, [
+                'email' => $this->request->getVar('email'),
+                'tanggal_lahir' => $this->request->getVar('tgl'),
+                'no_hp' => $this->request->getVar('nomorhp'),
+                'jk' => $this->request->getVar('jk')
+                ]
+        );
+        return redirect()->to(base_url('peserta/profil'));
     }
 
     public function daftarEvent() 

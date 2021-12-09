@@ -7,12 +7,6 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">FAQ</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="<?= base_url('peserta/daftarEvent'); ?>">Daftar Event</a>
         </li>
         <li class="nav-item dropdown">

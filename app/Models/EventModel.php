@@ -10,6 +10,7 @@ class EventModel extends Model
     protected $table            = 'event';
     protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'status', 'jumlah_pendaftar'];
     
+    
     public function getEvent($id = false, $disetujui = false)
     {
         if($id == false) 

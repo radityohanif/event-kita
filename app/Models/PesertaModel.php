@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class PesertaModel extends Model 
 {
     protected $table            = 'peserta';
-    protected $allowedFields    = ['username', 'email', 'nama', 'alamat', 'jk', 'no_hp', 'daftar_acara', 'gambar_profil', 'event_saya'];
+    protected $allowedFields    = ['username', 'email', 'nama', 'alamat', 'jk', 'no_hp', 'daftar_acara', 'gambar_profil', 'event_saya','tanggal_lahir'];
     
     public function getPeserta($username)
     {

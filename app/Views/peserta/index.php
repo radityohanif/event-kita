@@ -64,21 +64,21 @@
     <div class="row justify-content-evenly mt-3">
       <div class="col-3 bg-coklat-rounded text-light text-center py-2">
         <p class="fs-5">
-          <span class="fw-bolder fs-2">156</span>
+          <span class="fw-bolder fs-2"><?= $jumlah_peserta ?></span>
           <br />
           Peserta Aktif
         </p>
       </div>
       <div class="col-3 bg-coklat-rounded text-light text-center py-2">
         <p class="fs-5">
-          <span class="fw-bolder fs-2">50</span>
+          <span class="fw-bolder fs-2"><?= $jumlah_penyelenggara ?></span>
           <br />
           Penyelenggara Aktif
         </p>
       </div>
       <div class="col-3 bg-coklat-rounded text-light text-center py-2">
         <p class="fs-5">
-          <span class="fw-bolder fs-2">399</span>
+          <span class="fw-bolder fs-2"><?= $jumlah_event ?></span>
           <br />
           Event Terdaftar
         </p>

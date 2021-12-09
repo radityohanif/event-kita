@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- My CSS -->
   <link rel="stylesheet" href="<?= base_url('style/dashboard.css'); ?>" />
+  <!-- My CSS -->
+  <link rel="stylesheet" href="<?= base_url('style/global.css'); ?>" />
   <!-- Favicon -->
   <link rel="shortcut icon" href="<?= base_url('eventkita.ico'); ?>">
 
@@ -31,7 +33,7 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <nav class="navbar navbar-expand-lg bg-coklat fixed-top">
     <div class="container">
       <a class="navbar-brand fw-bolder fs-4" href="<?= base_url(); ?>">EventKita</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,15 +51,15 @@
   <!-- Akhir Navbar -->
 
   <!-- Profil -->
-  <div class="background"></div>
+  <div class="background mt-5" style="background: url('img/background/<?= $profil['background'] ?>') ;"></div>
   <div class="container profil">
     <div class="row">
-      <div class="col-1 foto"></div>
+      <div class="col-1 foto" style="background: url('img/foto profil/<?= $profil['gambar_profil'] ?>') ;"></div>
       <div class="col-3">
         <div class="row">
           <div class="col">
             <h2><?= strtoupper($_SESSION['user']['username']); ?></h2>
-            <p class="fs-5 fw-bolder"><?= $_SESSION['user']['nama']; ?></p>
+            <p class="fs-5 fw-bolder"><?= $profil['nama']; ?></p>
             <a class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editmodal">
               Edit
               <i class="bi bi-pencil-square"></i>
@@ -77,7 +79,7 @@
         <p><?= count($daftar_event); ?></p>
       </div>
       <div class="col-3">
-        <p>Pengikut</p>
+        <p>Popularitas</p>
         <p><?= implode("", $pengikut[0]); ?></p>
       </div>
     </div>
@@ -234,7 +236,7 @@
   </div>
   <!-- Akhir Modal Create Event -->
 
-  <!-- Modal Create Event -->
+  <!-- Modal Edit Profil -->
   <div class="modal fade" id="editmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -243,17 +245,67 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form class="row justify-content-center" action="<?= base_url('penyelenggara/edit'); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <div class="col">
+              <div class="mb-3">
+                <label for="nama" class="form-label fw-bold">Nama Penyelenggara</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="" />
+              </div>
+              <div class="mb-3">
+                <label for="foto" class="form-label fw-bold">Gambar profil</label>
+                <input type="file" class="form-control" id="foto" name="foto" />
+              </div>
+              <div class="mb-3">
+                <label for="bg" class="form-label fw-bold">Gambar Background</label>
+                <input type="file" class="form-control" id="bg" name="bg" />
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-primary">Edit</button>
+          <button type="submit" class="btn btn-primary">Kirim</button>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <!-- Akhir Modal Create Event -->
+  <!-- Modal Edit Profil -->
 
+  <!-- Footer -->
+  <footer class="mt-150 bg-coklat text-light pt-5 pb-3">
+    <div class="row">
+        <div class="col-md-5 mx-4">
+            <h2 class="fw-bolder"><span class="text-kuning">Event</span>Kita</h2>
+            <p class="lead">
+                PT. Kita Maju <br />
+                Jl. Buaya Raya Blok B-14 Garden City, Jakarta <br />
+                0886-2020-1119
+            </p>
+        </div>
+        <div class="col-md-5 mx-4">
+            <h2 class="fw-bolder"><span class="text-kuning">Follow us</span></h2>
+            <div class="row fs-2">
+                <div class="col-1">
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+                <div class="col-1">
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                </div>
+                <div class="col-1">
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 mb-3 fw-normal">
+        <div class="col text-center">©️Copyright 2021</div>
+    </div>
+  </footer>
+  
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 

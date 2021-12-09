@@ -37,7 +37,8 @@ class Penyelenggara extends BaseController
             'title' => 'Dashboard ' . $_SESSION['user']['nama'] ,
             'validator' => \Config\Services::validation(),
             'daftar_event' => $this->eventModel->where(['username_penyelenggara' => $_SESSION['user']['username']])->findAll(),
-            'pengikut' => $this->eventModel->getPengikut($_SESSION['user']['username'])
+            'pengikut' => $this->eventModel->getPengikut($_SESSION['user']['username']),
+            'profil' => $this->penyelenggaraModel->find($_SESSION['user']['id'])
         ];
         
         /**
@@ -117,6 +118,7 @@ class Penyelenggara extends BaseController
              * Jika validasi gagal, 
              * maka kirimkan pesan kesalahan ke view pengajuan event
              */
+            session()->setFlashdata('danger', 'Event gagal diupload, mohon coba lagi');
             return redirect()->to(base_url('penyelenggara'))->withInput();
         }
         
@@ -146,6 +148,36 @@ class Penyelenggara extends BaseController
          * kirim pesan sukses dan arahkan ke controller penyelenggara
          */
         session()->setFlashdata('success', 'Event berhasil diupload, silahkan tunggu konfirmasi dari pihak EventKita 😀');
+        return redirect()->to(base_url('penyelenggara'));
+    }
+
+    public function edit()
+    {
+        $id = $_SESSION['user']['id'];
+        // ambil gambar
+        $fileFoto = $this->request->getFile('foto');
+        $filebg = $this->request->getFile('bg');
+        // pindahkan file ke folder img/foto profil
+        // dd($fileFoto);
+        if($fileFoto->getSize() != false && $filebg->getSize() != false ){
+            $fileFoto->move('img/foto profil');
+            $filebg->move('img/background');
+            $this->penyelenggaraModel->update(
+                $id, [
+                    'nama' => $this->request->getVar('nama'),
+                    'email' => $this->request->getVar('email'),
+                    'gambar_profil' => $fileFoto->getName(),
+                    'background' => $filebg->getName()
+                    ]
+            );
+            return redirect()->to(base_url('penyelenggara'));
+        }
+        $this->penyelenggaraModel->update(
+            $id, [
+                'nama' => $this->request->getVar('nama'),
+                'email' => $this->request->getVar('email'),
+                ]
+        );
         return redirect()->to(base_url('penyelenggara'));
     }
 }
