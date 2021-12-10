@@ -35,7 +35,7 @@
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-coklat fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bolder fs-4" href="<?= base_url(); ?>">EventKita</a>
+      <a class="navbar-brand fw-bolder fs-4" href="<?= base_url(); ?>"> <span style="color: #ffe600;">Event</span>Kita</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,10 +51,10 @@
   <!-- Akhir Navbar -->
 
   <!-- Profil -->
-  <div class="background mt-5" style="background: url('img/background/<?= $profil['background'] ?>') ;"></div>
+  <div class="background mt-5" style="background: url('img/background/<?= $profil['background'] ?>'); background-size: cover;"></div>
   <div class="container profil">
     <div class="row">
-      <div class="col-1 foto" style="background: url('img/foto profil/<?= $profil['gambar_profil'] ?>') ;"></div>
+      <div class="col-1 foto" style="background: url('img/foto profil/<?= $profil['gambar_profil'] ?>'); background-size: cover;"></div>
       <div class="col-3">
         <div class="row">
           <div class="col">
@@ -278,34 +278,34 @@
   <!-- Footer -->
   <footer class="mt-150 bg-coklat text-light pt-5 pb-3">
     <div class="row">
-        <div class="col-md-5 mx-4">
-            <h2 class="fw-bolder"><span class="text-kuning">Event</span>Kita</h2>
-            <p class="lead">
-                PT. Kita Maju <br />
-                Jl. Buaya Raya Blok B-14 Garden City, Jakarta <br />
-                0886-2020-1119
-            </p>
+      <div class="col-md-5 mx-4">
+        <h2 class="fw-bolder"><span class="text-kuning">Event</span>Kita</h2>
+        <p class="lead">
+          PT. Kita Maju <br />
+          Jl. Buaya Raya Blok B-14 Garden City, Jakarta <br />
+          0886-2020-1119
+        </p>
+      </div>
+      <div class="col-md-5 mx-4">
+        <h2 class="fw-bolder"><span class="text-kuning">Follow us</span></h2>
+        <div class="row fs-2">
+          <div class="col-1">
+            <a href="#"><i class="bi bi-youtube"></i></a>
+          </div>
+          <div class="col-1">
+            <a href="#"><i class="bi bi-twitter"></i></a>
+          </div>
+          <div class="col-1">
+            <a href="#"><i class="bi bi-instagram"></i></a>
+          </div>
         </div>
-        <div class="col-md-5 mx-4">
-            <h2 class="fw-bolder"><span class="text-kuning">Follow us</span></h2>
-            <div class="row fs-2">
-                <div class="col-1">
-                    <a href="#"><i class="bi bi-youtube"></i></a>
-                </div>
-                <div class="col-1">
-                    <a href="#"><i class="bi bi-twitter"></i></a>
-                </div>
-                <div class="col-1">
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
     <div class="row mt-5 mb-3 fw-normal">
-        <div class="col text-center">©️Copyright 2021</div>
+      <div class="col text-center">©️Copyright 2021</div>
     </div>
   </footer>
-  
+
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
