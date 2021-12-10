@@ -153,31 +153,106 @@ class Penyelenggara extends BaseController
 
     public function edit()
     {
+        $rules = [
+            'nama' => [
+                'rules' => 'alpha_space',
+                'errors' => [
+                    'alpha_space' => 'nama hanya boleh mengandung karakter abjad dan spasi'
+                ]
+            ],
+            'email' => [
+                'rules' => 'valid_email',
+                'errors' => [
+                    'valid_email' => 'pastikan format email yang kamu tulis benar', 
+                ]
+            ],
+            'foto' => [
+                'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,2048]',
+                'errors' => [
+                    'mime_in' => 'Format gambar yang diizinkan hanya jpg, jpeg dan png',
+                    'max_size' => 'Ukuran gambar maksimum 2 MB'
+                ]
+            ],
+            'bg' => [
+                'rules' => 'mime_in[bg,image/jpg,image/jpeg,image/png]|max_size[bg,2048]',
+                'errors' => [
+                    'mime_in' => 'Format gambar yang diizinkan hanya jpg, jpeg dan png',
+                    'max_size' => 'Ukuran gambar maksimum 2 MB'
+                ]
+            ],
+        ];
+        if($this->validate($rules) == false) 
+        {
+            /**
+             * Jika validasi gagal, 
+             * maka kirimkan pesan kesalahan ke view pengajuan event
+             */
+            session()->setFlashdata('danger', 'Data profil gagal diperbarui, mohon coba lagi');
+            return redirect()->to(base_url('penyelenggara'))->withInput();
+        }
+
+        /**
+         * 
+         * PROSES UPLOAD GAMBAR
+         * inisiasi data input
+         * 
+         */
+        
         $id = $_SESSION['user']['id'];
-        // ambil gambar
         $fileFoto = $this->request->getFile('foto');
         $filebg = $this->request->getFile('bg');
-        // pindahkan file ke folder img/foto profil
-        // dd($fileFoto);
-        if($fileFoto->getSize() != false && $filebg->getSize() != false ){
-            $fileFoto->move('img/foto profil');
-            $filebg->move('img/background');
-            $this->penyelenggaraModel->update(
-                $id, [
+        
+        /**
+         * 
+         * UPDATE DATABASE
+         * 
+         */
+        if(($fileFoto->getSize() && $filebg->getSize()) == false)
+        {
+            /**
+             * 
+             * Jika gambar profil dan background tidak diupdate
+             * 
+             */
+            $this->penyelenggaraModel->update($id, 
+                [
                     'nama' => $this->request->getVar('nama'),
                     'email' => $this->request->getVar('email'),
-                    'gambar_profil' => $fileFoto->getName(),
-                    'background' => $filebg->getName()
-                    ]
-            );
-            return redirect()->to(base_url('penyelenggara'));
-        }
-        $this->penyelenggaraModel->update(
-            $id, [
-                'nama' => $this->request->getVar('nama'),
-                'email' => $this->request->getVar('email'),
                 ]
-        );
+            );
+        }
+
+        if($fileFoto->getSize() != false)
+        {
+            /**
+             * 
+             * Jika gambar profil diupdate
+             * 
+             */
+            $fileFoto->move('img/foto profil');
+            $this->penyelenggaraModel->update($id, 
+                [
+                    'gambar_profil' => $fileFoto->getName()
+                ]
+                );
+        }
+
+        if($filebg->getSize() != false)
+        {
+            /**
+             * 
+             * Jika gambar bacgkround diupdate
+             * 
+             */
+            $filebg->move('img/foto profil');
+            $this->penyelenggaraModel->update($id, 
+                [
+                    'background' => $filebg->getName()
+                ]
+            );
+        }
+
+        session()->setFlashdata('success', 'Data profil berhasil diperbarui😀');
         return redirect()->to(base_url('penyelenggara'));
     }
 }

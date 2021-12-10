@@ -249,19 +249,31 @@
             <div class="col">
               <div class="mb-3">
                 <label for="nama" class="form-label fw-bold">Nama Penyelenggara</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="" />
+                <input type="text" value="<?= $profil['nama']; ?>" class="form-control <?= ($validator->hasError('nama'))?'is-invalid':'';?>" id="nama" name="nama" value="<?= old('nama'); ?>" />
+                <div class="invalid-feedback">
+                  <?= $validator->getError('nama'); ?>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label fw-bold">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="" />
+                <input type="email" value="<?= $profil['email']; ?>" class="form-control <?= ($validator->hasError('email'))?'is-invalid':'';?>" id="email" name="email" value="<?= old('email'); ?>" />
+                <div class="invalid-feedback">
+                  <?= $validator->getError('email'); ?>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="foto" class="form-label fw-bold">Gambar profil</label>
-                <input type="file" class="form-control" id="foto" name="foto" />
+                <input type="file" class="form-control <?= ($validator->hasError('foto'))?'is-invalid':'';?>" id="foto" name="foto" value="<?= old('foto'); ?>" />
+                <div class="invalid-feedback">
+                  <?= $validator->getError('foto'); ?>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="bg" class="form-label fw-bold">Gambar Background</label>
-                <input type="file" class="form-control" id="bg" name="bg" />
+                <input type="file" class="form-control <?= ($validator->hasError('bg'))?'is-invalid':'';?>" id="bg" name="bg" value="<?= old('bg'); ?>" />
+                <div class="invalid-feedback">
+                  <?= $validator->getError('bg'); ?>
+                </div>
               </div>
             </div>
         </div>

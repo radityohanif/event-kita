@@ -63,13 +63,34 @@ class Peserta extends BaseController
     {
         $data = [
             'title' => 'EVENTKITA | Profil Saya',
-            'profil' => $this->pesertaModel->find($_SESSION['user']['id'])
+            'profil' => $this->pesertaModel->find($_SESSION['user']['id']),
+            'validator' => \Config\Services::validation()
         ];
         return view('peserta/profilEdit', $data);
     }
 
     public function submitEdit()
     {
+        $rules = [
+            'foto' => [
+                'rules' => 'mime_in[foto,image/jpg,image/jpeg,image/png]|max_size[foto,2048]',
+                'errors' => [
+                    'mime_in' => 'Format gambar yang diizinkan hanya jpg, jpeg dan png',
+                    'max_size' => 'Ukuran gambar maksimum 2 MB'
+                ]
+            ],
+        ];
+        if($this->validate($rules) == false) 
+        {
+            /**
+             * Jika validasi gagal, 
+             * maka kirimkan pesan kesalahan ke view pengajuan event
+             */
+            session()->setFlashdata('danger', 'Event gagal diupload, mohon coba lagi');
+            return redirect()->to(base_url('peserta/edit'))->withInput();
+        }
+        
+        
         $id = $_SESSION['user']['id'];
         // ambil gambar
         $fileFoto = $this->request->getFile('foto');
