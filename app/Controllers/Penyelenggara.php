@@ -260,4 +260,49 @@ class Penyelenggara extends BaseController
         session()->setFlashdata('success', 'Data profil berhasil diperbarui😀');
         return redirect()->to(base_url('penyelenggara'));
     }
+
+    public function detail($id)
+    {
+        $data = [
+            'event' => $this->eventModel->getEvent($id)
+        ];
+
+        $jadwalEvent = $this->eventModel->setJadwalEvents([$data['event']]);
+
+        $data += [
+            'title' => 'Detail Event | ' . $data['event']['nama'],
+            'jadwalEvent' => $jadwalEvent[0],   
+            'status' => $this->eventModel->getStatus($data['event'], true)
+        ];
+        
+        return view('penyelenggara/detail', $data);
+    }
+
+    public function hapus()
+    {
+        $id = $this->request->getVar('id');
+        $namaEvent = $this->request->getVar('nama');
+        $this->eventModel->delete($id);
+
+        session()->setFlashdata('success', 'Event ' . $namaEvent . ' Berhasil dihapus');
+        return redirect()->to('penyelenggara');
+    }
+
+    public function editEvent()
+    {
+        return "
+        <center>
+            <h1>
+                COMING SOON
+            </h1>
+            <h2>
+                Ya Gess
+            </h2>
+            <h3>
+                Developernya istirahat dulu.. 💤
+            </h3>
+        </center>
+        ";
+    }
+
 }

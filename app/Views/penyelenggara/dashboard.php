@@ -144,7 +144,7 @@
         $s = $status[$index];
       ?>
       <div class="col-md-4 my-3">
-        <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
+        <a href="<?= base_url('penyelenggara/detail/' . $event['id']) ?>">
           <div class="card shadow">
             <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
             <div class="card-body">

@@ -61,26 +61,43 @@ class EventModel extends Model
         return $hasil;
     }
 
-    public function getStatus($daftarEvent)
+    public function getStatus($daftarEvent, $single=false)
     {
-        $result = [];
-
-        foreach($daftarEvent as $event)
+        if($single == true)
         {
-            switch ($event['status']) {
+            switch ($daftarEvent['status']) {
                 case '1':
-                    array_push($result, "Diterima");
+                    return 'Diterima';
                     break;
                 case '-1':
-                    array_push($result, "Ditolak");
+                    return 'Ditolak';
                     break;
                 case '0':
-                    array_push($result, "Sedang diverifikasi");
+                    return 'Sedang diverifikasi';
                     break;
             }
         }
 
-        return $result;
+        else if($single == false)
+        {
+            $result = [];
+
+            foreach($daftarEvent as $event)
+            {
+                switch ($event['status']) {
+                    case '1':
+                        array_push($result, "Diterima");
+                        break;
+                    case '-1':
+                        array_push($result, "Ditolak");
+                        break;
+                    case '0':
+                        array_push($result, "Sedang diverifikasi");
+                        break;
+                }
+            }
+            return $result;
+        }
     }
 
     protected function formatHari($day)
