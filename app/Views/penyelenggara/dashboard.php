@@ -18,6 +18,25 @@
   <link rel="shortcut icon" href="<?= base_url('eventkita.ico'); ?>">
 
   <title><?= $title; ?></title>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+  <?php if(isset($_SESSION['upload'])): ?>
+  <script>
+  $(document).ready(function() {
+    $("#createmodal").modal('show');
+  });
+  </script>
+  <?php endif; ?>
+
+  <?php if(isset($_SESSION['edit'])): ?>
+  <script>
+  $(document).ready(function() {
+    $("#editmodal").modal('show');
+  });
+  </script>
+  <?php endif; ?>
+
 </head>
 
 <style>
@@ -76,7 +95,7 @@
     <div class="row justify-content-center text-center">
       <div class="col-3">
         <p>Event Terdaftar</p>
-        <p><?= count($daftar_event); ?></p>
+        <p><?= count($event_terdaftar); ?></p>
       </div>
       <div class="col-3">
         <p>Popularitas</p>
@@ -122,7 +141,7 @@
       <?php 
         $index = 0;
         foreach($daftar_event as $event): 
-        $status = $statusMulai[$index];
+        $s = $status[$index];
       ?>
       <div class="col-md-4 my-3">
         <a href="<?= base_url('peserta/detail/' . $event['id']) ?>">
@@ -130,12 +149,17 @@
             <img width="214" height="380" src="<?= base_url('img/poster webinar/' . $event['poster']); ?>" class="card-img-top" width="400" height="400" />
             <div class="card-body">
               <h5 class="card-title"><?= $event['nama']; ?></h5>
-              <?php if($status == 'Sudah Mulai')
+              <?php if($s == 'Diterima')
                 {
-                  echo '<span class="badge bg-danger">Sudah Mulai</span>';
-                }else
+                  echo '<span class="badge bg-primary">Diterima</span>';
+                }
+                else if($s == 'Ditolak')
                 {
-                  echo '<span class="badge bg-primary">Belum Mulai</span>';
+                  echo '<span class="badge bg-danger">Ditolak</span>';
+                }
+                else
+                {
+                  echo '<span class="badge bg-success">Sedang diverifikasi</span>';
                 }
               ?>
               <p class="card-text mt-3">
@@ -248,10 +272,11 @@
           <form class="row justify-content-center" action="<?= base_url('penyelenggara/edit'); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <div class="col">
               <div class="mb-3">
-                <label for="nama" class="form-label fw-bold">Nama Penyelenggara</label>
-                <input type="text" value="<?= $profil['nama']; ?>" class="form-control <?= ($validator->hasError('nama'))?'is-invalid':'';?>" id="nama" name="nama" value="<?= old('nama'); ?>" />
+                <label for="nama_penyelenggara" class="form-label fw-bold">Nama Penyelenggara</label>
+                <input type="text" value="<?= $profil['nama']; ?>" class="form-control <?= ($validator->hasError('nama_penyelenggara'))?'is-invalid':'';?>" id="nama_penyelenggara" name="nama_penyelenggara"
+                  value="<?= old('nama_penyelenggara'); ?>" />
                 <div class="invalid-feedback">
-                  <?= $validator->getError('nama'); ?>
+                  <?= $validator->getError('nama_penyelenggara'); ?>
                 </div>
               </div>
               <div class="mb-3">
@@ -315,11 +340,12 @@
     </div>
     <div class="row mt-5 mb-3 fw-normal">
       <div class="col text-center">©️Copyright 2021</div>
-    </div>
+    </div>nama_penyelenggara
   </footer>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 
 </body>
 

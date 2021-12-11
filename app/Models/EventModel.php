@@ -61,6 +61,28 @@ class EventModel extends Model
         return $hasil;
     }
 
+    public function getStatus($daftarEvent)
+    {
+        $result = [];
+
+        foreach($daftarEvent as $event)
+        {
+            switch ($event['status']) {
+                case '1':
+                    array_push($result, "Diterima");
+                    break;
+                case '-1':
+                    array_push($result, "Ditolak");
+                    break;
+                case '0':
+                    array_push($result, "Sedang diverifikasi");
+                    break;
+            }
+        }
+
+        return $result;
+    }
+
     protected function formatHari($day)
     {
         switch ($day) {

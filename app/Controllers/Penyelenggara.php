@@ -37,8 +37,13 @@ class Penyelenggara extends BaseController
             'title' => 'Dashboard ' . $_SESSION['user']['nama'] ,
             'validator' => \Config\Services::validation(),
             'daftar_event' => $this->eventModel->where(['username_penyelenggara' => $_SESSION['user']['username']])->findAll(),
+            'event_terdaftar' => $this->eventModel->where([
+                'username_penyelenggara' => $_SESSION['user']['username'],
+                'status' => 1,
+                ]
+                )->findAll(),
             'pengikut' => $this->eventModel->getPengikut($_SESSION['user']['username']),
-            'profil' => $this->penyelenggaraModel->find($_SESSION['user']['id'])
+            'profil' => $this->penyelenggaraModel->find($_SESSION['user']['id']),
         ];
         
         /**
@@ -47,9 +52,9 @@ class Penyelenggara extends BaseController
 
         $data += [
             'jadwal_event' => $this->eventModel->setJadwalEvents($data['daftar_event']),
-            'statusMulai' => $this->eventModel->cekWaktu($data['daftar_event'])
+            'status' => $this->eventModel->getStatus($data['daftar_event'])
         ];
-        
+
         return view('penyelenggara/dashboard', $data);
     }
 
@@ -119,7 +124,7 @@ class Penyelenggara extends BaseController
              * maka kirimkan pesan kesalahan ke view pengajuan event
              */
             session()->setFlashdata('danger', 'Event gagal diupload, mohon coba lagi');
-            return redirect()->to(base_url('penyelenggara'))->withInput();
+            return redirect()->to(base_url('penyelenggara'))->withInput()->with('upload', 'error');
         }
         
         /**
@@ -154,7 +159,7 @@ class Penyelenggara extends BaseController
     public function edit()
     {
         $rules = [
-            'nama' => [
+            'nama_penyelenggara' => [
                 'rules' => 'alpha_space',
                 'errors' => [
                     'alpha_space' => 'nama hanya boleh mengandung karakter abjad dan spasi'
@@ -188,7 +193,7 @@ class Penyelenggara extends BaseController
              * maka kirimkan pesan kesalahan ke view pengajuan event
              */
             session()->setFlashdata('danger', 'Data profil gagal diperbarui, mohon coba lagi');
-            return redirect()->to(base_url('penyelenggara'))->withInput();
+            return redirect()->to(base_url('penyelenggara'))->withInput()->with('edit', 'error');
         }
 
         /**
@@ -216,7 +221,7 @@ class Penyelenggara extends BaseController
              */
             $this->penyelenggaraModel->update($id, 
                 [
-                    'nama' => $this->request->getVar('nama'),
+                    'nama' => $this->request->getVar('nama_penyelenggara'),
                     'email' => $this->request->getVar('email'),
                 ]
             );
