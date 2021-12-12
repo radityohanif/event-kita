@@ -65,20 +65,6 @@
           ?>
         </div>
       </div>
-      <div class="container">
-        <div class="row justify-content-center mb-4">
-          <div class="col">
-            <form action="<?= base_url('penyelenggara/editEvent'); ?>" method="POST">
-              <button type="submit" class=" mb-3 btn btn-primary container-fluid fs-5 fw-bold py-3">Edit</button>
-            </form>
-            <form action="<?= base_url('penyelenggara/hapus'); ?>" method="POST">
-              <input type="hidden" name="id" value="<?= $event['id']; ?>">
-              <input type="hidden" name="nama" value="<?= $event['nama']; ?>">
-              <button type="submit" class="btn btn-danger container-fluid fs-5 fw-bold py-3" name="hapus" value="ok">Hapus</button>
-            </form>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <!-- Akhir Detail Event -->

@@ -3,13 +3,19 @@
 namespace App\Controllers;
 
 use App\Models\EventModel;
+use App\Models\PesertaModel;
+use App\Models\PenyelenggaraModel;
 
 class Home extends BaseController
 {
     protected $eventModel;
+    protected $pesertaModel;
+    protected $penyelenggaraModel;
 
     public function __construct(){
+        $this->pesertaModel = new PesertaModel();
         $this->eventModel = new EventModel();
+        $this->penyelenggaraModel = new PenyelenggaraModel();
     }
 
     public function index()
@@ -28,7 +34,10 @@ class Home extends BaseController
          */
         $data = [
             'title' => 'EVENTKITA | Online Event Organizer for everyone ',
-            'event_populer' => $this->eventModel->getEventPopuler()
+            'event_populer' => $this->eventModel->getEventPopuler(),
+            'jumlah_event' => count($this->eventModel->getEvent(false, true)),
+            'jumlah_peserta' => count($this->pesertaModel->findAll()),
+            'jumlah_penyelenggara' => count($this->penyelenggaraModel->findAll())
         ];
         return view('home/index', $data);
     }

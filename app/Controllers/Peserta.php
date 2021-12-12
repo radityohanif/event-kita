@@ -120,16 +120,22 @@ class Peserta extends BaseController
         return redirect()->to(base_url('peserta/profil'));
     }
 
-    public function daftarEvent() 
+    public function daftarEvent($page = 1) 
     {
-        $daftar_event = $this->eventModel->getEvent(false, true);
+        $daftar_event = $this->eventModel->getEvent(false, true, $page);
+        $totalData = count($this->eventModel->where(['status' => 1])->findAll());
+        $jumlahDataPerHalaman = 6;
         $data = [
             'title' => 'EVENTKITA | Daftar Event',
             'daftar_event' => $daftar_event,
             'jadwal_event' => $this->eventModel->setJadwalEvents($daftar_event),
-            'statusMulai' => $this->eventModel->cekWaktu($daftar_event)
+            'statusMulai' => $this->eventModel->cekWaktu($daftar_event),
+            'jumlahHalaman' => ceil($totalData / $jumlahDataPerHalaman),
+            'halamanAktif' => $page,
+            'cari' => false
         ];
         
+
         return view('peserta/daftarEvent', $data);
     }
 
@@ -139,7 +145,8 @@ class Peserta extends BaseController
         $data = [
             'title' => 'EVENTKITA | Daftar Event',
             'daftar_event' => $this->eventModel->cari($nama_event),
-            'keyword' => $nama_event
+            'keyword' => $nama_event,
+            'cari' => true
         ];
         $data += [
             'jadwal_event' => $this->eventModel->setJadwalEvents($data['daftar_event']),
@@ -167,7 +174,6 @@ class Peserta extends BaseController
             'jadwalEvent' => $jadwalEvent[0],
             'statusMulai' => $statusMulai[0]
         ];
-
         
         return view('peserta/detail', $data);
     }
@@ -207,5 +213,25 @@ class Peserta extends BaseController
         ];
 
         return view('peserta/eventSaya', $data);
+    }
+
+    public function dashboard ($username)
+    {
+        $data = [
+            'title' => 'dasboard '. $username,
+            'daftar_event' => $this->eventModel->where(['username_penyelenggara' => $username])->findAll(),
+            'event_terdaftar' => $this->eventModel->where([
+                'username_penyelenggara' => $username,
+                'status' => 1,
+                ]
+                )->findAll(),
+            'pengikut' => $this->eventModel->getPengikut($username),
+            'profil' => $this->penyelenggaraModel->find(1)
+        ];
+        $data += [
+            'jadwal_event' => $this->eventModel->setJadwalEvents($data['daftar_event']),
+            'status' => $this->eventModel->getStatus($data['daftar_event'])
+        ];
+        return view('peserta/dashboard',$data);
     }
 }

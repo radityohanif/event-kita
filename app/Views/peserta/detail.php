@@ -37,7 +37,7 @@
       <div class="row fs-5 mx-md-5 my-2">
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-building"></i> Penyelenggara Event</p>
-          <a href="#" class="my-link">
+          <a href="<?= base_url('peserta/dashboard/'.$event['username_penyelenggara']) ?>" class="my-link">
             <u>
               <?= $event['username_penyelenggara']; ?>
             </u>
@@ -48,8 +48,9 @@
           <p><?= $jadwalEvent; ?></p>
         </div>
         <div class="col-md-4 mb-4">
+          <?php $kuotaSisa = $event['kuota'] - $event['jumlah_pendaftar']; ?>
           <p class="fw-bold"><i class="bi bi-people-fill"></i> Kuota tersisa</p>
-          <p><?= $event['kuota']; ?> Orang</p>
+          <p><?= $kuotaSisa ?> Orang</p>
         </div>
         <div class="col-md-4 mb-4">
           <p class="fw-bold"><i class="bi bi-person-fill"></i> Mengikuti</p>
@@ -83,7 +84,7 @@
               <?php 
                 if(!in_array($event['id'], $eventSaya)) 
                 {
-                  if($statusMulai == 'Sudah Mulai') 
+                  if($statusMulai == 'Sudah Mulai' || $kuotaSisa == 0) 
                   {
                     echo '<button type="submit" class="btn btn-secondary container-fluid fs-5 fw-bold py-3 disabled">Daftar</button>';
                   } 

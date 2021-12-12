@@ -1,14 +1,15 @@
 <?= $this->extend('layout/peserta/template'); ?>
 <?= $this->section('content'); ?>
 
-<body class="bg-kuning">
-  <style>
+<style>
   .card-body {
     flex: 1 1 auto;
     padding: 1rem 1rem;
     height: 200px;
   }
   </style>
+
+<body class="bg-kuning">
 
   <!-- Flasher message-->
   <div class="row mt-100 justify-content-center">
@@ -66,6 +67,7 @@
     }
   
   ?>
+
   <!-- Daftar Event -->
   <div class="container mt-5">
     <div class="row mt-5 justify-content-start">
@@ -107,18 +109,30 @@
   <!-- Akhir Daftar Event -->
 
   <!-- Pagination -->
+<?php if($cari == false) : ?>
   <nav aria-label="Page navigation example">
     <ul class="pagination pagination-lg justify-content-center mt-5">
-      <li class="page-item disabled">
-        <a class="page-link">Previous</a>
-      </li>
-      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
       <li class="page-item">
-        <a class="page-link" href="#">Next</a>
+        <?php if($halamanAktif>1): ?>
+          <a class="page-link" href="<?= base_url('peserta/daftarEvent/'.$halamanAktif-1)?>">Previous</a>
+        <?php endif ; ?>
+      </li>
+      <?php for($i = 1 ; $i <= $jumlahHalaman ; $i++) : ?>
+        <?php if($i == $halamanAktif): ?>
+          <li class="page-item active"><a class="page-link" href="<?= base_url('peserta/daftarEvent/'.$i)?>"><?= $i ?></a></li>
+        <?php endif; ?>
+        <?php if($i != $halamanAktif): ?>
+          <li class="page-item"><a class="page-link" href="<?= base_url('peserta/daftarEvent/'.$i)?>"><?= $i ?></a></li>
+        <?php endif; ?>
+      <?php endfor; ?>
+      
+      <li class="page-item">
+        <?php if($halamanAktif<$jumlahHalaman): ?>
+          <a class="page-link" href="<?= base_url('peserta/daftarEvent/'.$halamanAktif+1)?>">Next</a>
+        <?php endif ; ?>
       </li>
     </ul>
   </nav>
-  <!-- Akhir Pagination -->
+<?php endif; ?>
+<!-- Akhir Pagination -->
   <?= $this->endSection(); ?>

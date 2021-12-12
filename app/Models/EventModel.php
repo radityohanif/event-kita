@@ -11,8 +11,9 @@ class EventModel extends Model
     protected $allowedFields    = ['username_penyelenggara', 'nama', 'tanggal', 'waktu', 'kuota', 'link_meet', 'deskripsi', 'poster', 'status', 'jumlah_pendaftar'];
     
     
-    public function getEvent($id = false, $disetujui = false)
+    public function getEvent($id = false, $disetujui = false, $page = 1)
     {
+        
         if($id == false) 
         {
             if($disetujui == false) {
@@ -26,8 +27,15 @@ class EventModel extends Model
                 /**
                  * Ambil Seluruh Event yang sudah disetujui oleh admin
                  */
-                return $this->where(['status' => 1])
-                            ->findAll();
+                $jumlahDataPerHalaman = 6;
+                $halamanAktif = $page;
+                $awalData = ($jumlahDataPerHalaman * $halamanAktif) - $jumlahDataPerHalaman;
+
+                $db      = \Config\Database::connect();
+                $builder = $db->table('event');
+                // $result = $this->where(['status' => 1])->findAll();
+                $getlimit = $builder->where('status',1)->get($jumlahDataPerHalaman,$awalData)->getResultArray();
+                return $getlimit;
             }
         }
 
