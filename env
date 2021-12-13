@@ -14,13 +14,13 @@
 # ENVIRONMENT
 #--------------------------------------------------------------------
 
-# CI_ENVIRONMENT = production
+CI_ENVIRONMENT = production
 
 #--------------------------------------------------------------------
 # APP
 #--------------------------------------------------------------------
 
-# app.baseURL = ''
+app.baseURL = 'http://localhost/eventkita/public/'
 # app.forceGlobalSecureRequests = false
 
 # app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
@@ -37,10 +37,16 @@
 # DATABASE
 #--------------------------------------------------------------------
 
-# database.default.hostname = localhost
-# database.default.database = ci4
-# database.default.username = root
-# database.default.password = root
+database.default.hostname = localhost
+database.default.database = eventkita
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+
+# database.default.hostname = epiz_30580233_eventkita
+# database.default.database = epiz_30580233_eventkita
+# database.default.username = epiz_30580233
+# database.default.password = ojp5Ytghb7lnZ
 # database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 
