@@ -45,7 +45,7 @@
     </div>
     <div class="row mt-5 justify-content-center">
       <div class="col-4">
-        <a href="<?= base_url('peserta/daftarEvent'); ?>" class="btn btn-coklat container-fluid fw-bold py-3"> LIHAT SEMUA EVENT </a>
+        <a href="<?= base_url('login'); ?>" class="btn btn-coklat container-fluid fw-bold py-3"> LIHAT SEMUA EVENT </a>
       </div>
     </div>
   </div>
