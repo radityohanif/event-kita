@@ -1,4 +1,4 @@
-<?= $this->extend('layout/peserta/template'); ?>
+<?= $this->extend('layout/penyelenggara/template'); ?>
 <?= $this->section('content'); ?>
 
 <style>
